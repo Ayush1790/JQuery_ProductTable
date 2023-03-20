@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<form >
+		<div id="add_product_form">
+			<label for="product_sku" id="product__sk">
+				<span>Product SKU</span> 
+				<input type="number" name="product_sku" id="product_sku" min="1">
+			</label>
+			<label for="product_name" id="product_nam">
+				<span>Product Name</span> 
+				<input type="text" name="product_name" id="product_name">
+			</label>
+			<label for="product_price" id="product_pric">
+				<span>Product Price</span> 
+				<input type="number" name="product_price" id="product_price" min="1"> 
+			</label>
+			<label for="product_quantity" id="product_quantit">
+				<span>Product Quantity</span> 
+				<input type="number" name="product_quantity" id="product_quantity" min="1">
+			</label>
+			<p class="submit">
+				<input type="button" name="add_product" id="add_product" value="Add Product" onclick="addData()">
+				<input type="button" name="Update_product" id="update_product" value="Update Product" onclick="updateData(this)">
+			</p>
+		</div>
+	</form>
+		<div id="notification">
+			<div class="success">Product Added Successfully.<a href="#" class="close">X</a></div>
+			<div class="error">There is some problem.<a href="#" class="close">X</a></div>
+		</div>
+		<div id="product_list">
+			<table>
+				<thead>
+				<tr>
+					<th>SKU</th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Quantity</th>
+					<th>Action</th>
+					
+				</tr>
+				</thead>
+				<tbody class="show">
+			</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+<script src="./JS/script.js"></script>
+</html>
