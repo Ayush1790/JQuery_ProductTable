@@ -3,6 +3,7 @@ $(document).ready(function () {
     $("#update_product").css("display","none");
     $(".close").click(function(){
         $(".error").css("display", "none");
+        $(".success").css("display", "none");
     })
 });
 //function for adding data
@@ -11,22 +12,23 @@ function addData(){
         let name = $("#product_name").val();
         let price = $("#product_price").val();
         let qty = $("#product_quantity").val();
-        if (check("#product_sku", sku, "#product__sk")) { return; }
-        if (check("#product_name", name, "#product_nam")) { return; }
-        if (check("#product_price", price, "#product_pric")) { return; }
-        if (check("#product_quantity", qty, "#product_quantit")) { return; }
+        if (check("#product_sku", sku, "#product__sk","#msg1")) { return; }
+        if (check("#product_name", name, "#product_nam","#msg2")) { return; }
+        if (check("#product_price", price, "#product_pric","#msg3")) { return; }
+        if (check("#product_quantity", qty, "#product_quantit","#msg4")) { return; }
         product.push({ sku: sku, name: name, price: price, qty: qty });
         $(".success").css("display", "block");
         displaydata();
+        resetValues();
         setTimeout(function () {
             $(".success").css("display", "none");
         }, 5000);  
 }
 // function for validation
-function check(id, val, mid) {
+function check(id, val, mid,msg) {
     if (val == ""||val<=0) {
         $(id).css("border", "1px solid red");
-        var txt2 = $("<span class='msg'></span>").text("* " + id + " should not be empty and greater then zero").css("color", "red");
+        var txt2 = $(msg).text("* " + id + " should not be empty and greater then zero").css("color", "red");
         $(mid).append(txt2);
         $(".error").css("display", "block");
         return 1;
@@ -87,11 +89,14 @@ function updateData(a){
             }
         });
         displaydata();
-        $("#product_sku").val("");
-        $("#product_name").val("");
-        $("#product_price").val("");
-        $("#product_quantity").val("");
+        resetValues();
         $("#add_product").css("display","block");
         $("#update_product").css("display","none");
+}
+function resetValues(){
+    $("#product_sku").val("");
+    $("#product_name").val("");
+    $("#product_price").val("");
+    $("#product_quantity").val("");
 }
 
